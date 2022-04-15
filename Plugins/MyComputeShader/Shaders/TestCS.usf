@@ -1,0 +1,14 @@
+#include "/Engine/Public/Platform.ush"
+
+Texture2D<float4> temTexture_input;
+RWTexture2D<float4> temTexture_Output;
+
+uint Index;
+
+[numthreads(8,8,1)]
+void CSTest(uint3 id : SV_DispatchThreadID)
+{
+    float4 TmpColor =  temTexture_input[id.xy];
+    TmpColor = 1 - TmpColor;
+    temTexture_Output[id.xy] = TmpColor;
+}

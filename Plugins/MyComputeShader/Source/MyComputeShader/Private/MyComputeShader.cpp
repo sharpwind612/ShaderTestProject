@@ -8,7 +8,7 @@ void FMyComputeShaderModule::StartupModule()
 {
 	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
 	FString ShaderDir = FPaths::Combine(IPluginManager::Get().FindPlugin(TEXT("MyComputeShader"))->GetBaseDir(), TEXT("Shaders"));
-	AddShaderSourceDirectoryMapping(TEXT("/Plugin/MyComputerShader/Shaders"), ShaderDir);
+	AddShaderSourceDirectoryMapping(TEXT("/Plugins/MyComputeShader/Shaders"), ShaderDir);
 }
 
 void FMyComputeShaderModule::ShutdownModule()

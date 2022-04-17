@@ -1,14 +1,37 @@
 #include "/Engine/Public/Platform.ush"
 
-Texture2D<float4> temTexture_input;
-RWTexture2D<float4> temTexture_Output;
+Texture2D<float4> tmpTexture_input;
+RWTexture2D<float4> tmpTexture_out;
 
 uint Index;
 
-[numthreads(8,8,1)]
+//[numthreads(8,8,1)]
+//void CSTest(uint3 id : SV_DispatchThreadID)
+//{
+//    float4 TmpColor = tmpTexture_input[id.xy];
+//    TmpColor = 1 - TmpColor;
+//    tmpTexture_out[id.xy] = TmpColor;
+//}
+
+[numthreads(8, 8, 1)]
 void CSTest(uint3 id : SV_DispatchThreadID)
 {
-    float4 TmpColor =  temTexture_input[id.xy];
-    TmpColor = 1 - TmpColor;
-    temTexture_Output[id.xy] = TmpColor;
+    float4 TmpColor = tmpTexture_input[id.xy];
+    TmpColor = pow(TmpColor, 1.0 / 2.2);
+    tmpTexture_out[id.xy * 4 + uint2(0, 0)] = TmpColor; //float4(float3(id) / 256, 1);
+    tmpTexture_out[id.xy * 4 + uint2(0, 1)] = TmpColor;
+    tmpTexture_out[id.xy * 4 + uint2(0, 2)] = TmpColor;
+    tmpTexture_out[id.xy * 4 + uint2(0, 3)] = TmpColor;
+    tmpTexture_out[id.xy * 4 + uint2(1, 0)] = TmpColor;
+    tmpTexture_out[id.xy * 4 + uint2(1, 1)] = TmpColor;
+    tmpTexture_out[id.xy * 4 + uint2(1, 2)] = TmpColor;
+    tmpTexture_out[id.xy * 4 + uint2(1, 3)] = TmpColor;
+    tmpTexture_out[id.xy * 4 + uint2(2, 0)] = TmpColor;
+    tmpTexture_out[id.xy * 4 + uint2(2, 1)] = TmpColor;
+    tmpTexture_out[id.xy * 4 + uint2(2, 2)] = TmpColor;
+    tmpTexture_out[id.xy * 4 + uint2(2, 3)] = TmpColor;
+    tmpTexture_out[id.xy * 4 + uint2(3, 0)] = TmpColor;
+    tmpTexture_out[id.xy * 4 + uint2(3, 1)] = TmpColor;
+    tmpTexture_out[id.xy * 4 + uint2(3, 2)] = TmpColor;
+    tmpTexture_out[id.xy * 4 + uint2(3, 3)] = TmpColor;
 }

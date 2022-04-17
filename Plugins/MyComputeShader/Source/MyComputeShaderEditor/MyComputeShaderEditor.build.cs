@@ -6,7 +6,7 @@ public class MyComputeShaderEditor : ModuleRules
 	{
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "UnrealEd", "RenderCore", "RHI", "MyComputeShader" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "UnrealEd", "RenderCore", "RHI", "MyComputeShader", "Projects" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] { "Core", "RenderCore", "MyComputeShader" });
 
